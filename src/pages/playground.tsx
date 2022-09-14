@@ -7,6 +7,7 @@ import Card from 'components/Card'
 import { Input } from 'components/Input'
 import TableProbabilities from 'components/TableProbabilities'
 import { Paragraph, Subtitle, Title } from 'components/Typography'
+
 import { playgroundRunner } from '../playgroundRunner'
 
 const Main = styled.main`
