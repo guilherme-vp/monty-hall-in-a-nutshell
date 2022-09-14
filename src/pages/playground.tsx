@@ -1,3 +1,7 @@
+import styled from 'styled-components'
+
+import { useState } from 'react'
+
 import { Button } from 'components/Button'
 import Card from 'components/Card'
 import { Input } from 'components/Input'
@@ -5,8 +9,6 @@ import TableProbabilities from 'components/TableProbabilities'
 import { Paragraph, Subtitle, Title } from 'components/Typography'
 import { montyHallSimulator } from 'montyHall'
 import Link from 'next/link'
-import { useState } from 'react'
-import styled from 'styled-components'
 
 const Main = styled.main`
 	display: flex;
@@ -76,28 +78,40 @@ const LabelSpan = styled.span`
 
 const boxes: boolean[] = [false, false, false]
 
-const WhyPage = () => {
+interface Result {
+	wins: number
+	loses: number
+	winRate: string
+}
+
+function WhyPage() {
 	const [nBoxes, setNBoxes] = useState<number>(3)
 	const [nSimulations, setNSimulations] = useState<number>(1000)
-	const [switchingResults, setSwitchingResults] = useState<any>({})
-	const [notSwitchingResults, setNotSwitchingResults] = useState<any>({})
+	const [switchingResults, setSwitchingResults] = useState<Result>()
+	const [notSwitchingResults, setNotSwitchingResults] = useState<Result>()
 
 	const handleRunPlayground = () => {
 		const switching = { wins: 0, loses: 0 }
 		const notSwitching = { wins: 0, loses: 0 }
 
-		for (let i = 0; i < nSimulations; i++) {
+		for (let i = 0; i < nSimulations; i + 1) {
 			const hasOwn = montyHallSimulator({ nBoxes, shouldSwitch: false })
 
-			if (hasOwn) notSwitching.wins++
-			else notSwitching.loses++
+			if (hasOwn) {
+				notSwitching.wins + 1
+			} else {
+				notSwitching.loses + 1
+			}
 		}
 
-		for (let i = 0; i < nSimulations; i++) {
+		for (let i = 0; i < nSimulations; i + 1) {
 			const hasOwn = montyHallSimulator({ nBoxes, shouldSwitch: true })
 
-			if (hasOwn) switching.wins++
-			else switching.loses++
+			if (hasOwn) {
+				switching.wins + 1
+			} else {
+				switching.loses + 1
+			} 
 		}
 
 		setSwitchingResults({
@@ -200,7 +214,8 @@ const WhyPage = () => {
 				<BoxSection>
 					{boxes.map((_, index) => (
 						<Card
-							number={index++}
+							key={index}
+							number={index}
 							hasPrize={index === 0}
 							clickable={false}
 							isOpen={false}
@@ -214,7 +229,8 @@ const WhyPage = () => {
 				<BoxSection>
 					{boxes.map((_, index) => (
 						<Card
-							number={index++}
+							key={index}
+							number={index + 1}
 							hasPrize={index === 0}
 							clickable={false}
 							isOpen={index === 0}
@@ -228,7 +244,8 @@ const WhyPage = () => {
 				<BoxSection>
 					{boxes.map((_, index) => (
 						<Card
-							number={index++}
+							key={index}
+							number={index + 1}
 							hasPrize={index === 0}
 							clickable={false}
 							isOpen={index === 2}
@@ -241,7 +258,13 @@ const WhyPage = () => {
 				</Paragraph>
 				<BoxSection>
 					{boxes.map((_, index) => (
-						<Card number={index++} hasPrize={index === 0} clickable={false} isOpen />
+						<Card
+							key={index}
+							number={index + 1}
+							hasPrize={index === 0}
+							clickable={false}
+							isOpen
+						/>
 					))}
 				</BoxSection>
 			</Section>
@@ -252,8 +275,10 @@ const WhyPage = () => {
 					is <b>1/3 = 33% of chances to guess correctly</b>.
 				</Paragraph>
 				<BoxSection>
-					{Array.from({ length: 3 }, () => (
-						<Title style={{ margin: '0 24px' }}>33%</Title>
+					{Array.from({ length: 3 }, (_, index) => (
+						<Title key={index} style={{ margin: '0 24px' }}>
+							33%
+						</Title>
 					))}
 				</BoxSection>
 				<Paragraph>
@@ -263,8 +288,10 @@ const WhyPage = () => {
 					opened box anymore.
 				</Paragraph>
 				<BoxSection>
-					{Array.from({ length: 2 }, () => (
-						<Title style={{ margin: '0 24px' }}>50%</Title>
+					{Array.from({ length: 2 }, (_, index) => (
+						<Title key={index} style={{ margin: '0 24px' }}>
+							50%
+						</Title>
 					))}
 				</BoxSection>
 				<Paragraph>

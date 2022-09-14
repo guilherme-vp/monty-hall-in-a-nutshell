@@ -1,9 +1,10 @@
-import { useState } from 'react'
-import Link from 'next/link'
 import styled, { useTheme } from 'styled-components'
+
+import { useState } from 'react'
+
+import Link from 'next/link'
 import { useWindowSize } from 'react-use'
 import Confetti from 'react-confetti'
-
 import { Button } from 'components/Button'
 import Card from 'components/Card'
 import { Subtitle, Title } from 'components/Typography'
@@ -32,7 +33,7 @@ const BoxSection = styled.section`
 
 const initialBoxesArrangement: boolean[] = new Array(3).fill(false)
 
-const BoxesPage = () => {
+function BoxesPage() {
 	const theme = useTheme()
 	const { width, height } = useWindowSize()
 
@@ -127,6 +128,7 @@ const BoxesPage = () => {
 			<BoxSection>
 				{boxes.map((isOpen, index) => (
 					<Card
+						key={index}
 						isOpen={isOpen}
 						hasPrize={index === prizeIndex}
 						number={index + 1}

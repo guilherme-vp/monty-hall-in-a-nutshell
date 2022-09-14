@@ -1,5 +1,6 @@
-import Image from 'next/image'
 import styled from 'styled-components'
+
+import Image from 'next/image'
 import appleWatch from 'assets/apple-watch.png'
 
 const Box = styled.div.withConfig<{ clickable?: boolean }>({})`
@@ -56,7 +57,7 @@ export interface CardProps {
 	onClickBox?: () => void
 }
 
-const Card = ({ isOpen, hasPrize = false, number, clickable, onClickBox }: CardProps) => {
+function Card({ isOpen, hasPrize = false, number, clickable, onClickBox }: CardProps) {
 	return (
 		<Box clickable={clickable} onClick={() => clickable && onClickBox?.()}>
 			<BoxFront isOpen={isOpen}>

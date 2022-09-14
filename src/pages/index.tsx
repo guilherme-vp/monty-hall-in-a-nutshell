@@ -1,11 +1,12 @@
-import { Subtitle, Title } from 'components/Typography'
-import type { NextPage } from 'next'
-import Image from 'next/image'
 import styled, { useTheme } from 'styled-components'
 
+import Image from 'next/image'
+import { Subtitle, Title } from 'components/Typography'
 import appleWatch from 'assets/apple-watch.png'
 import Link from 'next/link'
 import { Button } from 'components/Button'
+
+import type { NextPage } from 'next'
 
 const Main = styled.main`
 	display: flex;
