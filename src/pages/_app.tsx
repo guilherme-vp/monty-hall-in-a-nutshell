@@ -1,10 +1,12 @@
-import type { AppProps } from 'next/app'
-import Head from 'next/head'
 import { ThemeProvider } from 'styled-components'
+
+import Head from 'next/head'
 import { GlobalStyle } from 'styles/Global.styles'
 import { theme } from 'styles/theme'
 
-const App = ({ Component, pageProps }: AppProps) => {
+import type { AppProps } from 'next/app'
+
+function App({ Component, pageProps }: AppProps) {
 	return (
 		<>
 			<Head>

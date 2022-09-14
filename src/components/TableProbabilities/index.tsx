@@ -16,7 +16,7 @@ const TableData = styled.td`
 	text-align: center;
 `
 
-const TableProbabilities = () => {
+function TableProbabilities() {
 	return (
 		<Table>
 			<thead>
