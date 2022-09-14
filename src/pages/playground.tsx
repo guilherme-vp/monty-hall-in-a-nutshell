@@ -1,14 +1,13 @@
 import styled from 'styled-components'
-
 import { useState } from 'react'
+import Link from 'next/link'
 
 import { Button } from 'components/Button'
 import Card from 'components/Card'
 import { Input } from 'components/Input'
 import TableProbabilities from 'components/TableProbabilities'
 import { Paragraph, Subtitle, Title } from 'components/Typography'
-import { montyHallSimulator } from 'montyHall'
-import Link from 'next/link'
+import { playgroundRunner } from '../playgroundRunner'
 
 const Main = styled.main`
 	display: flex;
@@ -80,7 +79,7 @@ const boxes: boolean[] = [false, false, false]
 
 interface Result {
 	wins: number
-	loses: number
+	losses: number
 	winRate: string
 }
 
@@ -91,37 +90,11 @@ function WhyPage() {
 	const [notSwitchingResults, setNotSwitchingResults] = useState<Result>()
 
 	const handleRunPlayground = () => {
-		const switching = { wins: 0, loses: 0 }
-		const notSwitching = { wins: 0, loses: 0 }
+		const notSwitching = playgroundRunner(false, nSimulations / 2, nBoxes)
+		const switching = playgroundRunner(true, nSimulations / 2, nBoxes)
 
-		for (let i = 0; i < nSimulations; i + 1) {
-			const hasOwn = montyHallSimulator({ nBoxes, shouldSwitch: false })
-
-			if (hasOwn) {
-				notSwitching.wins + 1
-			} else {
-				notSwitching.loses + 1
-			}
-		}
-
-		for (let i = 0; i < nSimulations; i + 1) {
-			const hasOwn = montyHallSimulator({ nBoxes, shouldSwitch: true })
-
-			if (hasOwn) {
-				switching.wins + 1
-			} else {
-				switching.loses + 1
-			}
-		}
-
-		setSwitchingResults({
-			...switching,
-			winRate: `${((switching.wins / nSimulations) * 100).toFixed(2)}%`
-		})
-		setNotSwitchingResults({
-			...notSwitching,
-			winRate: `${((notSwitching.wins / nSimulations) * 100).toFixed(2)}%`
-		})
+		setNotSwitchingResults(notSwitching)
+		setSwitchingResults(switching)
 	}
 
 	return (
@@ -139,17 +112,12 @@ function WhyPage() {
 					<LabelSpan>
 						<b>Number of boxes:</b> (<i>Default to 3</i>):
 					</LabelSpan>
-					<Input
-						type="number"
-						defaultValue={3}
-						value={nBoxes}
-						onChange={e => setNBoxes(+e.target.value)}
-					/>
+					<Input type="number" value={nBoxes} onChange={e => setNBoxes(+e.target.value)} />
 				</Label>
 				<Label>
 					<LabelSpan>
 						<b>Number of plays:</b> (
-						<i>1000 is a good value to see the spread of the probabilities</i>
+						<i>1000 is a good value to see the spread of the probabilities (<b>500 switching/500 not switching</b>)</i>
 						):
 					</LabelSpan>
 					<Input
@@ -167,14 +135,14 @@ function WhyPage() {
 						<thead>
 							<tr>
 								<TableHeader>Nº of wins not switching</TableHeader>
-								<TableHeader>Nº of loses not switching</TableHeader>
+								<TableHeader>Nº of losses not switching</TableHeader>
 								<TableHeader>Percentage of wins not switching</TableHeader>
 							</tr>
 						</thead>
 						<tbody>
 							<tr>
 								<TableData>{notSwitchingResults.wins} games</TableData>
-								<TableData>{notSwitchingResults.loses} games</TableData>
+								<TableData>{notSwitchingResults.losses} games</TableData>
 								<TableData>{notSwitchingResults.winRate}</TableData>
 							</tr>
 						</tbody>
@@ -185,14 +153,14 @@ function WhyPage() {
 						<thead>
 							<tr>
 								<TableHeader>Nº of wins switching</TableHeader>
-								<TableHeader>Nº of loses switching</TableHeader>
+								<TableHeader>Nº of losses switching</TableHeader>
 								<TableHeader>Percentage of wins switching</TableHeader>
 							</tr>
 						</thead>
 						<tbody>
 							<tr>
 								<TableData>{switchingResults.wins} games</TableData>
-								<TableData>{switchingResults.loses} games</TableData>
+								<TableData>{switchingResults.losses} games</TableData>
 								<TableData>{switchingResults.winRate}</TableData>
 							</tr>
 						</tbody>
@@ -299,6 +267,11 @@ function WhyPage() {
 					winning after switching is <strong>doubled</strong>, since one of the two empty
 					boxes was already opened.
 				</Paragraph>
+				<BoxSection>
+					<Title style={{ margin: '0 24px' }}>66%</Title>
+					<Title style={{ margin: '0 24px' }}>33%</Title>
+					<Title style={{ margin: '0 24px', textDecoration: 'line-through' }}>33%</Title>
+				</BoxSection>
 			</Section>
 			<Section>
 				<Subtitle size={1.5} align="left">

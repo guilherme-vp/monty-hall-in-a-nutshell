@@ -5,7 +5,7 @@ const Table = styled.table`
 	margin: 24px 0;
 `
 
-const TableHeader = styled.th`
+const TableHeaderData = styled.th`
 	border: 1px solid ${({ theme }) => theme.border.thick};
 	padding: 8px;
 `
@@ -20,11 +20,13 @@ function TableProbabilities() {
 	return (
 		<Table>
 			<thead>
-				<TableHeader>Behind door 1</TableHeader>
-				<TableHeader>Behind door 2</TableHeader>
-				<TableHeader>Behind door 3</TableHeader>
-				<TableHeader>Result if staying at door #1</TableHeader>
-				<TableHeader>Result if switching to the door offered</TableHeader>
+				<tr>
+					<TableHeaderData>Behind door 1</TableHeaderData>
+					<TableHeaderData>Behind door 2</TableHeaderData>
+					<TableHeaderData>Behind door 3</TableHeaderData>
+					<TableHeaderData>Result if staying at door #1</TableHeaderData>
+					<TableHeaderData>Result if switching to the door offered</TableHeaderData>
+				</tr>
 			</thead>
 			<tbody>
 				<tr>
@@ -33,7 +35,7 @@ function TableProbabilities() {
 					<TableData>
 						<b>Prize</b>
 					</TableData>
-					<TableData>Loses</TableData>
+					<TableData>Losses</TableData>
 					<TableData>
 						<b>Wins prize</b>
 					</TableData>
@@ -44,7 +46,7 @@ function TableProbabilities() {
 						<b>Prize</b>
 					</TableData>
 					<TableData>Empty</TableData>
-					<TableData>Loses</TableData>
+					<TableData>Losses</TableData>
 					<TableData>
 						<b>Wins prize</b>
 					</TableData>
@@ -58,7 +60,7 @@ function TableProbabilities() {
 					<TableData>
 						<b>Wins prize</b>
 					</TableData>
-					<TableData>Loses</TableData>
+					<TableData>Losses</TableData>
 				</tr>
 			</tbody>
 		</Table>

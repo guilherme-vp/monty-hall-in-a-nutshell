@@ -1,10 +1,9 @@
 import styled, { useTheme } from 'styled-components'
-
 import { useState } from 'react'
-
 import Link from 'next/link'
 import { useWindowSize } from 'react-use'
 import Confetti from 'react-confetti'
+
 import { Button } from 'components/Button'
 import Card from 'components/Card'
 import { Subtitle, Title } from 'components/Typography'

@@ -1,9 +1,9 @@
 import styled, { useTheme } from 'styled-components'
-
 import Image from 'next/image'
+import Link from 'next/link'
+
 import { Subtitle, Title } from 'components/Typography'
 import appleWatch from 'assets/apple-watch.png'
-import Link from 'next/link'
 import { Button } from 'components/Button'
 
 import type { NextPage } from 'next'

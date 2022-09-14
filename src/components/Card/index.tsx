@@ -1,6 +1,6 @@
 import styled from 'styled-components'
-
 import Image from 'next/image'
+
 import appleWatch from 'assets/apple-watch.png'
 
 const Box = styled.div.withConfig<{ clickable?: boolean }>({})`
