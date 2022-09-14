@@ -28,6 +28,10 @@ const Section = styled.section`
 const BoxSection = styled.section`
 	display: flex;
 	justify-content: center;
+	@media screen and (max-width: 1028px) {
+		flex-direction: column;
+		align-items: center;
+	}
 `
 
 const initialBoxesArrangement: boolean[] = new Array(3).fill(false)

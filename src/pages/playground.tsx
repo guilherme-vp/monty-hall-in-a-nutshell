@@ -44,7 +44,7 @@ const BoxSection = styled.section`
 	display: flex;
 	justify-content: center;
 	margin: 24px 0;
-	@media screen and (max-width: 1280px) {
+	@media screen and (max-width: 1028px) {
 		flex-direction: column;
 		align-items: center;
 	}
@@ -118,7 +118,10 @@ function WhyPage() {
 				<Label>
 					<LabelSpan>
 						<b>Number of plays:</b> (
-						<i>1000 is a good value to see the spread of the probabilities (<b>1000 switching/1000 not switching</b>)</i>
+						<i>
+							1000 is a good value to see the spread of the probabilities (
+							<b>1000 switching/1000 not switching</b>)
+						</i>
 						):
 					</LabelSpan>
 					<Input
