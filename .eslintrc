@@ -53,9 +53,9 @@
 		"class-methods-use-this": "off",
 		"no-useless-constructor": "off",
 		"no-unused-vars": "warn",
-		"no-unused-expressions": "warn",
-		"@typescript-eslint/no-unused-expressions": "warn",
-		"object-curly-newline": "warn",
+		"no-unused-expressions": "off",
+		"@typescript-eslint/no-unused-expressions": "off",
+		"object-curly-newline": "off",
 		"no-extra-parens": "off",
 		"react/require-default-props": "off",
 		"react/jsx-filename-extension": [

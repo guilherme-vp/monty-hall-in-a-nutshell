@@ -111,7 +111,7 @@ function WhyPage() {
 				switching.wins + 1
 			} else {
 				switching.loses + 1
-			} 
+			}
 		}
 
 		setSwitchingResults({
