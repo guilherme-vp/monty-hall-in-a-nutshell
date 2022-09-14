@@ -35,7 +35,7 @@ function TableProbabilities() {
 					<TableData>
 						<b>Prize</b>
 					</TableData>
-					<TableData>Losses</TableData>
+					<TableData>Loses</TableData>
 					<TableData>
 						<b>Wins prize</b>
 					</TableData>
@@ -46,7 +46,7 @@ function TableProbabilities() {
 						<b>Prize</b>
 					</TableData>
 					<TableData>Empty</TableData>
-					<TableData>Losses</TableData>
+					<TableData>Loses</TableData>
 					<TableData>
 						<b>Wins prize</b>
 					</TableData>
@@ -60,7 +60,7 @@ function TableProbabilities() {
 					<TableData>
 						<b>Wins prize</b>
 					</TableData>
-					<TableData>Losses</TableData>
+					<TableData>Loses</TableData>
 				</tr>
 			</tbody>
 		</Table>

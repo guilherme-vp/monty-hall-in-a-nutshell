@@ -91,8 +91,8 @@ function WhyPage() {
 	const [notSwitchingResults, setNotSwitchingResults] = useState<Result>()
 
 	const handleRunPlayground = () => {
-		const notSwitching = playgroundRunner(false, nSimulations / 2, nBoxes)
-		const switching = playgroundRunner(true, nSimulations / 2, nBoxes)
+		const notSwitching = playgroundRunner(false, nSimulations, nBoxes)
+		const switching = playgroundRunner(true, nSimulations, nBoxes)
 
 		setNotSwitchingResults(notSwitching)
 		setSwitchingResults(switching)
@@ -118,7 +118,7 @@ function WhyPage() {
 				<Label>
 					<LabelSpan>
 						<b>Number of plays:</b> (
-						<i>1000 is a good value to see the spread of the probabilities (<b>500 switching/500 not switching</b>)</i>
+						<i>1000 is a good value to see the spread of the probabilities (<b>1000 switching/1000 not switching</b>)</i>
 						):
 					</LabelSpan>
 					<Input
