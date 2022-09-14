@@ -4,6 +4,11 @@
 # Files
 *.json
 
+.yarn
+.vscode
+node_modules
+.next
+
 # Build
 dist
 build

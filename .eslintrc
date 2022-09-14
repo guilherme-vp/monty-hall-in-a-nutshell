@@ -8,11 +8,10 @@
 	"extends": [
 		"next/core-web-vitals",
 		"plugin:@typescript-eslint/recommended",
-		"airbnb",
+		"react-app",
 		"prettier",
+		"airbnb",
 		"plugin:import/typescript",
-		"prettier/@typescript-eslint",
-		"react-app"
 	],
 	"globals": {
 		"Atomics": "readonly",
@@ -27,11 +26,10 @@
 	},
 	"plugins": [
 		"import",
+		"prettier",
 		"react",
 		"react-hooks",
 		"@typescript-eslint",
-		"prettier",
-		"jsx-a11y"
 	],
 	"rules": {
 		"semi": [
@@ -46,6 +44,8 @@
 			"error",
 			"as-needed"
 		],
+		"react/no-unescaped-entities": "off",
+		"react/function-component-definition": "off",
 		"consistent-return": "off",
 		"no-underscore-dangle": "off",
 		"func-names": "off",
@@ -54,6 +54,7 @@
 		"no-useless-constructor": "off",
 		"no-unused-vars": "warn",
 		"no-extra-parens": "off",
+		"react/require-default-props": "off",
 		"react/jsx-filename-extension": [
 			1,
 			{
@@ -144,7 +145,7 @@
 			"error",
 			"never"
 		],
-		"prettier/prettier": "error",
+		"prettier/prettier": "off",
 		"import/no-cycle": "warn",
 		"import/order": [
 			"error",
